@@ -21,7 +21,7 @@
 				}
 				return "unknown";
 			}
-			function DetectAndServe(){
+			(function DetectAndServe(){
 				var os = getMobileOperatingSystem();
 				if (os == "Android") {
 				  window.location.href = "https://play.google.com/store/apps/details?id=com.hero.fridge"; 
@@ -32,7 +32,7 @@
 				} else {
 				// do nothing - may be facebook crawler or desktop
 				}
-			}()
+			})()
 		</script>
 		<meta property="og:url"           content="https://www.limpingturtle.com/fhlanding.html" />
 		<meta property="og:type"          content="website" />
