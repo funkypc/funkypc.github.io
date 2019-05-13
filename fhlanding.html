@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Fridge Hero</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fridge Hero</title>
+		<script>
+			function getMobileOperatingSystem() {
+				var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+				// Windows Phone must come first because its UA also contains "Android"
+				if (/windows phone/i.test(userAgent)) {
+				  return "Windows Phone";
+				}
+				if (/facebookexternalhit/i.test(userAgent)) {
+				  return "Facebook Crawler";
+				}
+				if (/android/i.test(userAgent)) {
+				  return "Android";
+				}
+				if (/iPad|iPhone|iP|iPod/.test(userAgent) && !window.MSStream) {
+				  return "iOS";
+				}
+				return "unknown";
+			}
+			function DetectAndServe(){
+				var os = getMobileOperatingSystem();
+				if (os == "Android") {
+				  window.location.href = "https://play.google.com/store/apps/details?id=com.hero.fridge"; 
+				} else if (os == "iOS") {
+				  window.location.href = "https://itunes.apple.com/app/fridge-hero/id1462463253";
+				// } else if (os == "Windows Phone") {
+				  // window.location.href = "http://www.WindowsPhoneexample.com";
+				} else {
+				// do nothing - may be facebook crawler or desktop
+				}
+			}
+		</script>
 		<meta property="og:url"           content="https://www.limpingturtle.com/fhlanding.html" />
 		<meta property="og:type"          content="website" />
 		<meta property="og:site_name"		 content="Fridge Hero" />
 		<meta property="og:title"         content="Fridge Hero – food tracking made easy" />
 		<meta property="og:description"   content="Easily organize the food in your fridge. Eat smarter. Save money. Waste less." />
 		<meta property="og:image"         content="https://www.limpingturtle.com/fbshare.png" />
+		<!-- You could set url with something like: <script>document.write(someFunction());</script> -->
 		<!-- <meta http-equiv="refresh" content="0; url=http://...">
 		<link rel="canonical" href="http://..." /> -->
 	</head>
+	<!-- <body onload="DetectAndServe()"> //Rather add () to end of script-->
 	<body>
 		<style>
 			body {
@@ -70,7 +103,7 @@
 			</a>
 		</div>
 		<div>
-			<span style="color:white;padding-right:58px">Coming Soon!</span><span style="color:white;opacity:1;padding-right:14px">Coming Soon!</span>
+			<!-- <span style="color:white;padding-right:58px">Coming Soon!</span><span style="color:white;opacity:1;padding-right:14px">Coming Soon!</span> -->
 		</div>
 	</body>
 </html>
